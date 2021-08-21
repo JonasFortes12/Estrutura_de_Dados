@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arvb.h"
+#include "fila.h"
 
 struct arvb{
-	char info;
+	int info;
 	ArvB *esq;
 	ArvB *dir;
 };
-
 
 /*Função que cria uma Árvore Binária de Busca Vazia.*/
 ArvB* arvb_cria_vazia(void){
@@ -40,7 +40,7 @@ void arvb_imprime(ArvB *a){
 	if(!arvb_vazia(a)){
 	
 		arvb_imprime(a->esq);
-		printf("%d", a->info);
+		printf("%d \n", a->info);
 		arvb_imprime(a->dir);	
 	}
 }
@@ -99,24 +99,125 @@ ArvB* arvb_remove(ArvB *a, int c){
 	return a;	
 }
 
-//---------------------------------------------------------------------------------------------------
+/*retorna a altura da arvore*/
+int arvb_altura(ArvB *a){
+	
+	if(arvb_vazia(a)) {
+        return -1;
+    } 
+    
+    int hSAE = arvb_altura(a -> esq);
+    int hSAD = arvb_altura(a -> dir);
+    int h = (hSAE > hSAD) ? hSAE : hSAD;
+    return h + 1;
+	
+}
 
+/*libera memoria*/
+void arvb_libera(ArvB *a) {
+    if (!arvb_vazia(a)) {
+        arvb_libera(a -> esq);
+        arvb_libera(a -> dir);
+        free(a);
+    }
+}
 
+/*Letra A*/
+int qtd_divisores(int n){
+	int i, cont = 0;
+	
+	for (i = 1; i <= n; i++) {
+        if (n % i == 0) cont++;
+    }
+    return cont;
+}
 
+int folhas_ndivp(ArvB* a, int n){
+	if(!arvb_vazia(a)){
+			
+        int divisores = qtd_divisores(a->info); 
+        int eIgual = (divisores == n);
+        
+		return eIgual + folhas_ndivp(a->esq, n) + folhas_ndivp(a->dir, n); 	 	
+	}
+	return 0;	 
+}
 
+/*Letra B*/
+int dois_filhos(ArvB* a){
+	if(!arvb_vazia(a)){
+		
+		ArvB* esq = a->esq;
+		ArvB* dir = a->dir;
+		
+		int temDois = (!arvb_vazia(esq) && !arvb_vazia(dir));
+		
+		return temDois + dois_filhos(esq) + dois_filhos(dir);		
+	}
+	return 0;
+}
 
+/*Letra C*/
+int nos_igual_altura(ArvB* a){
+	
+	if(!arvb_vazia(a)){
+		
+		ArvB* esq = a->esq;
+		ArvB* dir = a->dir;
+		
+		int mesmaAltura = (arvb_altura(esq) == arvb_altura(dir));
+		
+		return mesmaAltura + nos_igual_altura(esq) + nos_igual_altura(dir);	
+	}
+	return 0;
+}
 
+/*Letra D*/
+int arv_iguais(ArvB* a, ArvB* b){
+	
+	if(arvb_vazia(a) || arvb_vazia(b)) return 1;
+	
+	if(a->info != b->info) return 0;
+	
+	ArvB* esqA = a->esq;
+	ArvB* dirA = a->dir;
+	
+	ArvB* esqB = b->esq;
+	ArvB* dirB = b->dir;
+	
+	return arv_iguais(esqA, esqB) && arv_iguais(dirA, dirB);
+	
+}
 
+/*Letra E*/
+void impressao_arv_niveis(ArvB* a){
+	if (a == NULL) return;
+ 
+    int level = 0;
+    Fila* f = fila_cria();
+    fila_insere(f, a);
 
+    while (!fila_vazia(f)) {
+        int countNode = fila_comprimento(f);
 
+        while (countNode > 0) {
+            ArvB* nodeAux = fila_ponta(f);
 
+            printf("%d%s", nodeAux -> info, ((countNode == 1) ? "" : ", "));
+            
+            fila_remove(f);
+            
+            if (nodeAux->esq != NULL)
+                fila_insere(f, nodeAux->esq);
 
+            if (nodeAux->dir != NULL)
+                fila_insere(f, nodeAux->dir);
 
-
-
-
-
-
+            countNode--;
+        }
+        printf(" - nivel %d\n", level++);
+    }	
+}
 
 
 

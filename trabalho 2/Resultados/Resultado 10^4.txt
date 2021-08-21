@@ -1,0 +1,34 @@
+TAMANHO DO VETOR: 10000 
+
+
+
+
+____________Bubble Sort_____________
+Tempo [Vetor Crescente]: 292
+Tempo [Vetor Aleatorio]: 540
+Tempo [Vetor Decrescente]: 526
+
+____________Bubble Sort Otimizado_____________
+Tempo [Vetor Crescente]: 0
+Tempo [Vetor Aleatorio]: 411
+Tempo [Vetor Decrescente]: 403
+
+____________Insertion Sort_____________
+Tempo [Vetor Crescente]: 0
+Tempo [Vetor Aleatorio]: 90
+Tempo [Vetor Decrescente]: 185
+
+____________Merge Sort_____________
+Tempo [Vetor Crescente]: 2
+Tempo [Vetor Aleatorio]: 3
+Tempo [Vetor Decrescente]: 2
+
+____________Heap Sort_____________
+Tempo [Vetor Crescente]: 2
+Tempo [Vetor Aleatorio]: 2
+Tempo [Vetor Decrescente]: 2
+
+____________Quick Sort_____________
+Tempo [Vetor Crescente]: 129
+Tempo [Vetor Aleatorio]: 1
+Tempo [Vetor Decrescente]: 139

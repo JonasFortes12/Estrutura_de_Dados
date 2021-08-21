@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 typedef struct arvb ArvB;
 
 /*Função que cria uma Árvore Binária de Busca Vazia.*/
@@ -18,49 +21,25 @@ ArvB* arvb_insere(ArvB *a, int c);
 /*remove um inteiro em uma Árvore.*/
 ArvB* arvb_remove(ArvB *a, int c);
 
+/*retorna a altura da arvore*/
+int arvb_altura(ArvB *a);
+
 /*Libera o espaço alocado para uma Árvore.*/
 void arvb_libera(ArvB *a);
 
-/*retorne a quantidade de folhas que possuem o campo info com n divisores positivos*/
+/*Letra A*/
 int folhas_ndivp(ArvB* a, int n);
 
-/*retorne a quantidade de nós que possuem os dois filhos*/
+/*Letra B*/
 int dois_filhos(ArvB* a);
 
-/*retorne a quantidade de nós cujas subárvores esquerda e direita tenham igual altura.*/
+/*Letra C*/
 int nos_igual_altura(ArvB* a);
 
-/*compare se duas árvores  são iguais*/
+/*Letra D*/
 int arv_iguais(ArvB* a, ArvB* b);
 
-/*imprima os elementos por níveis*/
+/*Letra E*/
 void impressao_arv_niveis(ArvB* a);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

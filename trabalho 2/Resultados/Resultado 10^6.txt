@@ -1,0 +1,22 @@
+TAMANHO DO VETOR: 1000000 
+
+
+
+
+____________Merge Sort_____________
+Tempo [Vetor Crescente]: 257
+Tempo [Vetor Aleatorio]: 401
+Tempo [Vetor Decrescente]: 221
+
+____________Heap Sort_____________
+Tempo [Vetor Crescente]: 206
+Tempo [Vetor Aleatorio]: 392
+Tempo [Vetor Decrescente]: 208
+
+____________Quick Sort_____________
+Tempo [Vetor Aleatorio]: 150
+
+
+
+
+
